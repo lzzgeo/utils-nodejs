@@ -11,23 +11,23 @@ opts = {
   //"prefix":"xxxx",
 }
 
-function deleteAll(){
-  var result = true
 
+async function deleteAll() {
   try {
     for await (const blob of cClient.listBlobsFlat(opts)) {
       cClient.deleteBlob(blob.name)
-      .then(() => console.log(`==delete==: ${blob.name}`))
-      .catch((ex) => {console.log(ex.message); result=false});
+        .then(() => console.log(`==delete==: ${blob.name}`))
+        .catch((ex) => {
+          console.log(`==Failed==: ${blob.name}`);
+        });
     }
   } catch (err) {
     console.error(`Error: ${err.message}`);
   }
-
-  return result;
 }
 
-for (;!deleteAll();){}
+deleteAll();
+
 
 
 
