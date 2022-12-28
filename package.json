@@ -1,0 +1,20 @@
+{
+  "name": "utils-nodejs",
+  "version": "1.0.0",
+  "description": "There will be a bunch of scripts, which help others deal with a huge of data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lzzgeo/utils-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lzzgeo/utils-nodejs/issues"
+  },
+  "homepage": "https://github.com/lzzgeo/utils-nodejs#readme"
+}
