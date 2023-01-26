@@ -1,14 +1,13 @@
 const { BlobServiceClient } = require("@azure/storage-blob");
 
 // set 2 environment varialbes:  connection-string and container-name
-const conn_str = process.env.CONN_STR;
-const container_name = process.env.CONTAINER_NAME;
-
-bsClient = BlobServiceClient.fromConnectionString(conn_str)
-cClient = bsClient.getContainerClient(container_name)
+bsClient = BlobServiceClient.fromConnectionString(process.env.CONN_STR)
+cClient = bsClient.getContainerClient(process.env.CONTAINER_NAME)
 
 opts = {
-  //"prefix":"xxxx",
+  "prefix":"xx",
+  "includeVersions":true,
+  "includeSnapshots":true
 }
 
 
