@@ -5,17 +5,17 @@ bsClient = BlobServiceClient.fromConnectionString(process.env.CONN_STR)
 cClient = bsClient.getContainerClient(process.env.CONTAINER_NAME)
 
 opts = {
-  "prefix":"xx",
+  "prefix":process.env.OBJECT_PREFIX,
   "includeVersions":true,
   "includeSnapshots":true
 }
 
-
+var Count = 0
 async function deleteAll() {
   try {
     for await (const blob of cClient.listBlobsFlat(opts)) {
       cClient.deleteBlob(blob.name)
-        .then(() => console.log(`==delete==: ${blob.name}`))
+        .then(() => {console.log(`==delete==: ${blob.name}`); Count++})
         .catch((ex) => {
           console.log(`==Failed==: ${blob.name}`);
         });
@@ -23,6 +23,8 @@ async function deleteAll() {
   } catch (err) {
     console.error(`Error: ${err.message}`);
   }
+
+  console.log(`Done: ${Count}`);
 }
 
 deleteAll();
